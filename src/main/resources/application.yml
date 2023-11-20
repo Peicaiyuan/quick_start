@@ -35,12 +35,12 @@ spring:
         allow:
         url-pattern: /druid/*
         # 控制台管理用户名和密码
-        login-username: che300
-        login-password: che300
+        login-username: admin
+        login-password: admin***
   cache:
     redis:
       time-to-live: 24H
-      key-prefix: "gamma-rule:cache:"
+      key-prefix: "cy:cache:"
 
 forest:
   interceptors: com.cy.config.ForestLogInterceptor
@@ -62,3 +62,7 @@ spring:
         url: jdbc:mysql://127.0.0.1:3306/information_schema?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&useSSL=false&rewriteBatchedStatements=true&&allowMultiQueries=true
         username: root
         password: 123.com
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    database: 7
