@@ -16,12 +16,13 @@ import java.util.function.Consumer;
 /**
  * Forest日志拦截器
  *
+ * @param <T>
  * @author cypei
  */
 @Component
 public class ForestLogInterceptor<T> extends DefaultLogHandler implements Interceptor<T> {
 
-    private final static Logger log = LoggerFactory.getLogger(ForestLogInterceptor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ForestLogInterceptor.class);
 
     @Override
     public void logContent(String content) {
@@ -36,7 +37,7 @@ public class ForestLogInterceptor<T> extends DefaultLogHandler implements Interc
      */
     @Override
     public void onSuccess(T data, ForestRequest req, ForestResponse res) {
-        log(req, res, log::info);
+        log(req, res, LOG::info);
     }
 
     /**
@@ -44,8 +45,8 @@ public class ForestLogInterceptor<T> extends DefaultLogHandler implements Interc
      */
     @Override
     public void onError(ForestRuntimeException ex, ForestRequest req, ForestResponse res) {
-        log(req, res, log::error);
-        log.warn(ex.getMessage(), ex);
+        log(req, res, LOG::error);
+        LOG.warn(ex.getMessage(), ex);
     }
 
     private void log(ForestRequest req, ForestResponse res, Consumer<String> action) {
